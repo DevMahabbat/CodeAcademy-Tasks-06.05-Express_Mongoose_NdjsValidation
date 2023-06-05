@@ -1,8 +1,9 @@
 const express = require('express');
-const { UserController } = require('../controllers/UserController');
+U
 
 const { query, body } = require("express-validator");
 const { validate } = require('../middlewares/validation');
+const UserController = require('../controllers/UserController');
 const router = express.Router();
 
 router.get("", UserController.getAll)
@@ -14,6 +15,11 @@ router.post(
   UserController.postOne
 );
 
-router.get("/:id", UserController.getOne)
-router.get("/:id", UserController.getOne);
+router.get("api/users", UserController.getAll)
+router.get("/api/user/:id", UserController.getOne);
+router.post("/api/login", UserController.login)
+router.delete("/api/user/:id", UserController.delete)
+router.post("/api/createuser", UserController.add)
+router.post("/api/updateuser/:id", UserController.update)
+
 module.exports =router
